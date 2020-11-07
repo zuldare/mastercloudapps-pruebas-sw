@@ -17,6 +17,7 @@ class Controller {
         this.state = state;
     }
 
+    // TODO CHECK THIS METHOD IS NEVER CALLED
     public Color getColor(Coordinate coordinate) {
         assert coordinate != null;
         return this.game.getColor(coordinate);

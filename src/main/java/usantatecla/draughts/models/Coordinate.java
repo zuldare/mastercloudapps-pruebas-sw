@@ -62,6 +62,7 @@ public class Coordinate {
         return Math.abs(this.substract(coordinate).getRow());
     }
 
+    // TODO THIS METHOD IS NEVER CALLED
     Coordinate getBetweenDiagonalCoordinate(Coordinate coordinate) {
         assert this.getDiagonalDistance(coordinate) == 2;
         final Direction direction = this.getDirection(coordinate);

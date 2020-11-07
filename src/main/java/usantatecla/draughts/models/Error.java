@@ -1,6 +1,8 @@
 package usantatecla.draughts.models;
 
 public enum Error {
+
+    //TODO CHECK NO MESSAGE IS SHOWN
     BAD_FORMAT,
     EMPTY_ORIGIN, 
     OPPOSITE_PIECE, 

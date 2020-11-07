@@ -47,6 +47,7 @@ class Board {
         return betweenDiagonalPieces;
     }
 
+    // TODO CHECK THIS METHOD IS NEVER CALLED
     int getAmountBetweenDiagonalPieces(Coordinate origin, Coordinate target) {
         if (!origin.isOnDiagonal(target))
             return 0;

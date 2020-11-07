@@ -24,6 +24,7 @@ public class Console {
 		return input;
 	}
 
+	//TODO CHECK NEVER USED
 	public int readInt(String title) {
 		int input = 0;
 		boolean ok = false;
