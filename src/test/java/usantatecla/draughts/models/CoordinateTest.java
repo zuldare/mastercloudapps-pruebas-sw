@@ -1,9 +1,11 @@
 package usantatecla.draughts.models;
 
 import org.javatuples.Pair;
+import org.javatuples.Triplet;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -13,14 +15,8 @@ public class CoordinateTest {
 
     @Test
     public void getInstanceIsOutOfRange(){
-        List<Pair<String, Coordinate>> inputExpectedOutputResults = new ArrayList();
-        inputExpectedOutputResults.add(new Pair<>("00", null));
-        inputExpectedOutputResults.add(new Pair<>("09", null));
-        inputExpectedOutputResults.add(new Pair<>("90", null));
-        inputExpectedOutputResults.add(new Pair<>("09", null));
-
-        for(Pair<String, Coordinate> pair: inputExpectedOutputResults){
-            assertThat(Coordinate.getInstance(pair.getValue0()), is(pair.getValue1()));
+        for(String input: Arrays.asList("00", "09", "90", "09")){
+            assertNull(Coordinate.getInstance(input));
         }
     }
 
@@ -34,6 +30,31 @@ public class CoordinateTest {
 
         for(Pair<String, Coordinate> pair: inputExpectedOutputResults){
             assertThat(Coordinate.getInstance(pair.getValue0()), is(pair.getValue1()));
+        }
+    }
+
+    @Test
+    public void getInstanceWhenInputIsNotIntegerParseable(){
+        assertNull(Coordinate.getInstance("ua"));
+    }
+
+
+    @Test
+    public void testDirections(){
+
+        List<Triplet<Coordinate, Coordinate, Direction>> originDestinationExpectedDirectionList = Arrays.asList(
+                new Triplet<>(Coordinate.getInstance("33"), Coordinate.getInstance("15"), Direction.SE),
+                new Triplet<>(Coordinate.getInstance("33"), Coordinate.getInstance("22"), Direction.SW),
+                new Triplet<>(Coordinate.getInstance("33"), Coordinate.getInstance("42"), Direction.NW),
+                new Triplet<>(Coordinate.getInstance("33"), Coordinate.getInstance("66"), Direction.NE),
+                new Triplet<>(Coordinate.getInstance("33"), Coordinate.getInstance("23"), null),
+                new Triplet<>(Coordinate.getInstance("33"), Coordinate.getInstance("32"), null),
+                new Triplet<>(Coordinate.getInstance("33"), Coordinate.getInstance("43"), null),
+                new Triplet<>(Coordinate.getInstance("33"), Coordinate.getInstance("34"), null)
+        );
+
+        for(Triplet<Coordinate, Coordinate, Direction> triplet: originDestinationExpectedDirectionList){
+            assertThat(triplet.getValue0().getDirection(triplet.getValue1()), is(triplet.getValue2()));
         }
     }
 

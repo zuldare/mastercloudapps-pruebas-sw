@@ -1,10 +1,21 @@
 package usantatecla.draughts.models;
 
 enum Direction {
-    NE(1, 1), 
+
+    //TODO ARE THIS NAMES CORRECT???
+    /*
+              SW(-1,-1)              SE(-1,1)
+              (2,2)                  (2,4)
+                         (3,3)
+              (4,2)                  (4,4)
+              NW(1,-1)               NE(1,1)
+     */
+
+    NE(1, 1),
     SE(-1, 1), 
     SW(-1, -1), 
     NW(1, -1);
+
 
     private int horizontalShift;
     private int verticalShift;
