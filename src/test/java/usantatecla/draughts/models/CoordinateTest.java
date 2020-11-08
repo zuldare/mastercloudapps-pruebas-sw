@@ -1,6 +1,5 @@
 package usantatecla.draughts.models;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.javatuples.Pair;
 import org.javatuples.Triplet;
 import org.junit.Test;
@@ -8,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -185,4 +185,60 @@ public class CoordinateTest {
         }
     }
 
+    @Test
+    public void testGetDiagonalCoordinatesLevelGreaterThanBoardLimit(){
+        assertThat(Coordinate.getInstance("11").getDiagonalCoordinates(60).size(), is(0));
+    }
+
+    @Test
+    public void testGetDiagonalCoordinateInLeftUpperCornerShouldReturnOneCoordinate(){
+        for(int level=1; level<8; level++){
+            assertThat(Coordinate.getInstance("11").getDiagonalCoordinates(level).get(0), is(Coordinate.getInstance( (level+1) + "" + (level+1))));
+        }
+    }
+
+    @Test
+    public void testGetDiagonalCoordinateInRightUpperCornerShouldReturnOneCoordinate(){
+        int row = 1;
+        int col = 8;
+        for(int level=1; level<8; level++){
+            assertThat(Coordinate.getInstance("18").getDiagonalCoordinates(level).get(0), is(Coordinate.getInstance( (row + level) + "" + (col - level))));
+        }
+    }
+
+    @Test
+    public void testGetDiagonalCoordinateInLeftDownCornerShouldReturnOneCoordinate(){
+        int row = 8;
+        int col = 1;
+        for(int level=1; level<8; level++){
+            assertThat(Coordinate.getInstance("81").getDiagonalCoordinates(level).get(0), is(Coordinate.getInstance( (row - level) + "" + (col + level))));
+        }
+    }
+
+    @Test
+    public void testGetDiagonalCoordinateInRightDownCornerShouldReturnOneCoordinate(){
+        int row = 8;
+        int col = 8;
+        for(int level=1; level<8; level++){
+            assertThat(Coordinate.getInstance("88").getDiagonalCoordinates(level).get(0), is(Coordinate.getInstance( (row - level) + "" + (col - level))));
+        }
+    }
+
+    //TODO is good to  to check this possibilities
+    @Test
+    public void testGetDiagonalCoordinateWithin_RowTwoColTwo_RowSeven_ColSeven_ShouldReturnFourCoordinates() {
+        for (int row = 2; row < 8; row++) {
+            for (int col = 2; col < 8; col++) {
+                List<Coordinate> coordinatesInDiagonal = Coordinate.getInstance(row + "" + col).getDiagonalCoordinates(1);
+
+                List<String> coordinatesInDiagonalString = coordinatesInDiagonal.stream()
+                        .map(coordinate -> coordinate.toString())
+                        .collect(Collectors.toList());
+                coordinatesInDiagonalString.contains(Coordinate.getInstance((row - 1) + "" + (col - 1)).toString());
+                coordinatesInDiagonalString.contains(Coordinate.getInstance((row - 1) + "" + (col + 1)).toString());
+                coordinatesInDiagonalString.contains(Coordinate.getInstance((row + 1) + "" + (col - 1)).toString());
+                coordinatesInDiagonalString.contains(Coordinate.getInstance((row + 1) + "" + (col + 1)).toString());
+            }
+        }
+    }
 }
