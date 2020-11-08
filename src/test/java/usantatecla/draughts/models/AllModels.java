@@ -5,6 +5,9 @@ import org.junit.runners.Suite;
 
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TurnTest.class, StateTest.class, CoordinateTest.class})
+@Suite.SuiteClasses({TurnTest.class,
+        StateTest.class,
+        CoordinateTest.class,
+        DirectionTest.class})
 public class AllModels {
 }
