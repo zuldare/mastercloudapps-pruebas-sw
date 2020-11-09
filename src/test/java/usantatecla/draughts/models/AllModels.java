@@ -12,6 +12,7 @@ import org.junit.runners.Suite;
         DirectionTest.class,
         PawnTest.class,
         DraughtTest.class,
-        DirectionTest.class})
+        DirectionTest.class,
+        GameTest.class})
 public class AllModels {
 }
