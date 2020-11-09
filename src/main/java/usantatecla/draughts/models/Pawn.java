@@ -21,9 +21,6 @@ public class Pawn extends Piece {
 		return null;
     }
 
-    //TODO CHECK THIS METHOD IS NEVER CALLED
-    protected char[] getCodes() {
-		return Pawn.CHARACTERS;
-	}
-    
+
+
 }

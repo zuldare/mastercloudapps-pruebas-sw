@@ -5,9 +5,14 @@ import org.junit.runners.Suite;
 
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TurnTest.class,
+@Suite.SuiteClasses({
+        TurnTest.class,
         StateTest.class,
         CoordinateTest.class,
+        DirectionTest.class,
+        PieceTest.class,
+        PawnTest.class,
+        DraughtTest.class,
         DirectionTest.class})
 public class AllModels {
 }

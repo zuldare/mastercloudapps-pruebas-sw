@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 public class CoordinateTest {
 
@@ -225,6 +226,8 @@ public class CoordinateTest {
     }
 
     //TODO is good to  to check this possibilities
+    //This method is valid from  (2,2) --> (2,7)
+    //                           (7,2) --> (7,7
     @Test
     public void testGetDiagonalCoordinateWithin_RowTwoColTwo_RowSeven_ColSeven_ShouldReturnFourCoordinates() {
         for (int row = 2; row < 8; row++) {
@@ -241,4 +244,6 @@ public class CoordinateTest {
             }
         }
     }
+
+
 }
