@@ -10,7 +10,6 @@ import org.junit.runners.Suite;
         StateTest.class,
         CoordinateTest.class,
         DirectionTest.class,
-        PieceTest.class,
         PawnTest.class,
         DraughtTest.class,
         DirectionTest.class})
