@@ -42,7 +42,8 @@ public class StateTest {
     public void resetObjectReturnsInitialState(){
         State state = new State();
         state.next();
-        assertThat(state.getValueState(), is(stateValues.get(1)));
+        state.reset();
+        assertThat(state.getValueState(), is(stateValues.get(0)));
     }
 
 

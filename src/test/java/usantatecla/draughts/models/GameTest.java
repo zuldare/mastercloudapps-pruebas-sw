@@ -15,6 +15,11 @@ public class GameTest {
 
     private Game game;
 
+    // METERLE UN BUILDER
+//    private static Game game(String... rows){
+//        return Game.build()
+//    }
+
     @Before
     public void before(){
         this.game = new Game();
@@ -95,7 +100,7 @@ public class GameTest {
         assertThat(this.game.getTurnColor(), is(Color.BLACK));
     }
 
-    // TODO como probaría el isBlocked??
+
     @Test
     public void testIsNotBlocked(){
         assertFalse(this.game.isBlocked());

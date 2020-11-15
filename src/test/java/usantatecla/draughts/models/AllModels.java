@@ -13,6 +13,7 @@ import org.junit.runners.Suite;
         PawnTest.class,
         DraughtTest.class,
         DirectionTest.class,
-        GameTest.class})
+        GameTest.class,
+        BoardTest.class})
 public class AllModels {
 }
