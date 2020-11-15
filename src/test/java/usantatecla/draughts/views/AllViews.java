@@ -4,6 +4,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({})
+@Suite.SuiteClasses({ViewTest.class,
+        StartViewTest.class,
+        ResumeViewTest.class,
+        GameViewTest.class,
+        PlayViewTest.class})
 public class AllViews {
 }
