@@ -9,6 +9,7 @@ import org.junit.runners.Suite;
         ControllerTest.class,
         LogicTest.class,
         InteractorControllerTest.class,
-        StartControllerTest.class})
+        StartControllerTest.class,
+        ResumeController.class})
 public class AllControllers {
 }
