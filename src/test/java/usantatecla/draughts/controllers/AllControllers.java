@@ -10,6 +10,7 @@ import org.junit.runners.Suite;
         LogicTest.class,
         InteractorControllerTest.class,
         StartControllerTest.class,
-        ResumeController.class})
+        ResumeControllerTest.class,
+        PlayControllerTest.class})
 public class AllControllers {
 }
