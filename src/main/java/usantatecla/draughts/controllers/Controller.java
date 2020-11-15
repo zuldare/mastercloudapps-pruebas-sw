@@ -1,7 +1,5 @@
 package usantatecla.draughts.controllers;
 
-import usantatecla.draughts.models.Color;
-import usantatecla.draughts.models.Coordinate;
 import usantatecla.draughts.models.Game;
 import usantatecla.draughts.models.State;
 
@@ -17,11 +15,6 @@ class Controller {
         this.state = state;
     }
 
-    // TODO CHECK THIS METHOD IS NEVER CALLED
-    public Color getColor(Coordinate coordinate) {
-        assert coordinate != null;
-        return this.game.getColor(coordinate);
-    }
 
     public int getDimension() {
         return this.game.getDimension();
