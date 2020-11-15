@@ -6,11 +6,14 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        CancelControllerTest.class,
         ControllerTest.class,
-        LogicTest.class,
         InteractorControllerTest.class,
+        LogicTest.class,
+        MoveControllerTest.class,
+        PlayControllerTest.class,
         StartControllerTest.class,
-        ResumeControllerTest.class,
-        PlayControllerTest.class})
+        ResumeControllerTest.class
+        })
 public class AllControllers {
 }
