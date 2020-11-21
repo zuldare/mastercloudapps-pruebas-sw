@@ -12,6 +12,8 @@ public abstract class Piece {
 		this.color = color;
 	}
 
+	abstract Error isCorrectDiagonalMovement(int amountBetweenDiagonalPieces, int pair, Coordinate... coordinates);
+
 	Error isCorrectMovement(List<Piece> betweenDiagonalPieces, int pair, Coordinate... coordinates){
 		assert coordinates[pair] != null;
 		assert coordinates[pair + 1] != null;
@@ -23,11 +25,20 @@ public abstract class Piece {
 		return this.isCorrectDiagonalMovement(betweenDiagonalPieces.size(), pair, coordinates);
 	}
 
-	abstract Error isCorrectDiagonalMovement(int amountBetweenDiagonalPieces, int pair, Coordinate... coordinates);
-
 	boolean isLimit(Coordinate coordinate) {
-		return coordinate.isFirst() && this.getColor() == Color.WHITE
-				|| coordinate.isLast() && this.getColor() == Color.BLACK;
+		return isFirstAndWhite(coordinate) || isLastAndBlack(coordinate);
+	}
+
+	boolean isFirstAndWhite(Coordinate coordinate){
+		return coordinate.isFirst() && isColor(Color.WHITE);
+	}
+
+	boolean isLastAndBlack(Coordinate coordinate){
+		return coordinate.isLast() && isColor(Color.BLACK);
+	}
+
+	boolean isColor(Color color){
+		return this.getColor() == color;
 	}
 
 	boolean isAdvanced(Coordinate origin, Coordinate target) {
