@@ -64,7 +64,8 @@ public class PawnTest extends PieceTest {
         when(destination.getRow()).thenReturn(6);
         when(origin.getDiagonalDistance(destination)).thenReturn(1);
 
-        assertNull(whitePawn.isCorrectDiagonalMovement(this.getAmountBetweenDiagonalDistance(1), getPair(0), origin, destination));
+        assertThat(whitePawn.isCorrectDiagonalMovement(this.getAmountBetweenDiagonalDistance(1), getPair(0), origin, destination)
+                , is(Error.NONE));
     }
 
 }

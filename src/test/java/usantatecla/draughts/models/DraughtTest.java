@@ -37,7 +37,8 @@ public class DraughtTest extends PieceTest {
 
     @Test
     public void testIsCorrectDiagonalMovementJustOneEat(){
-        assertNull(whiteDraught.isCorrectDiagonalMovement(this.getAmountBetweenDiagonalDistance(1), getPair(0), origin, destination));
+        assertThat(whiteDraught.isCorrectDiagonalMovement(this.getAmountBetweenDiagonalDistance(1), getPair(0), origin, destination),
+                is(Error.NONE));
     }
 
     @Test

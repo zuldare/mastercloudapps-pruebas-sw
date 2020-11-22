@@ -94,7 +94,7 @@ public class BoardTest {
 
     @Test
     public void testGetColorWhenNoPieceAtCoordinateShouldReturnNull(){
-        assertNull(board.getColor(this.createCoordinate(5,5)));
+        assertThat(board.getColor(this.createCoordinate(5,5)), is(Color.NONE));
     }
 
     @Test

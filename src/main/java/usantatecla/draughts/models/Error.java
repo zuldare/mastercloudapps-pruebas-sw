@@ -13,5 +13,6 @@ public enum Error {
     COLLEAGUE_EATING,
     TOO_MUCH_ADVANCED,
     TOO_MUCH_EATINGS,
-    TOO_MUCH_JUMPS;
+    TOO_MUCH_JUMPS,
+    NONE;
 }

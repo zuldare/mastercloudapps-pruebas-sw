@@ -6,6 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import usantatecla.draughts.controllers.PlayController;
 import usantatecla.draughts.models.Coordinate;
+import usantatecla.draughts.models.Error;
 import usantatecla.draughts.models.Game;
 import usantatecla.draughts.models.State;
 
@@ -54,7 +55,7 @@ public class PlayViewTest extends SubViewTest {
                 .thenReturn(getCoordinates("1b2a"))
                 .thenReturn(getCoordinates("11.22"));
 
-        doReturn(null).when(playController).move(any(Coordinate.class), any(Coordinate.class));
+        doReturn(Error.NONE).when(playController).move(any(Coordinate.class), any(Coordinate.class));
         when(playController.isBlocked()).thenReturn(false);
 
         playView.interact(playController);
@@ -67,7 +68,7 @@ public class PlayViewTest extends SubViewTest {
     public void testPlayBlocked() {
 
         when(console.readString(anyString())).thenReturn(getCoordinates("11.22"));
-        doReturn(null).when(playController).move(any(Coordinate.class), any(Coordinate.class));
+        doReturn(Error.NONE).when(playController).move(any(Coordinate.class), any(Coordinate.class));
         when(playController.isBlocked()).thenReturn(true);
 
         playView.interact(playController);
@@ -79,7 +80,7 @@ public class PlayViewTest extends SubViewTest {
     public void testPlayWithTwoCoordinates() {
 
         when(this.console.readString(anyString())).thenReturn(getCoordinates("11.22"));
-        doReturn(null).when(this.playController).move(any(Coordinate.class), any(Coordinate.class));
+        doReturn(Error.NONE).when(this.playController).move(any(Coordinate.class), any(Coordinate.class));
         when(this.playController.isBlocked()).thenReturn(false);
 
         this.playView.interact(this.playController);
@@ -89,7 +90,7 @@ public class PlayViewTest extends SubViewTest {
     @Test
     public void testPlayWithThreeCoordinates() {
         when(this.console.readString(anyString())).thenReturn(getCoordinates("11.22.33"));
-        doReturn(null).when(this.playController).move(any(Coordinate.class), any(Coordinate.class), any(Coordinate.class));
+        doReturn(Error.NONE).when(this.playController).move(any(Coordinate.class), any(Coordinate.class), any(Coordinate.class));
 
         when(this.playController.isBlocked()).thenReturn(false);
 

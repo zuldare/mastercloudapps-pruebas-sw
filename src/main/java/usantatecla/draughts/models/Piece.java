@@ -17,12 +17,15 @@ public abstract class Piece {
 	Error isCorrectMovement(List<Piece> betweenDiagonalPieces, int pair, Coordinate... coordinates){
 		assert coordinates[pair] != null;
 		assert coordinates[pair + 1] != null;
+
 		if (!coordinates[pair].isOnDiagonal(coordinates[pair + 1]))
 			return Error.NOT_DIAGONAL;
+
 		for(Piece piece : betweenDiagonalPieces)
 			if (this.color == piece.getColor())
 				return Error.COLLEAGUE_EATING;
-		return this.isCorrectDiagonalMovement(betweenDiagonalPieces.size(), pair, coordinates);
+
+			return this.isCorrectDiagonalMovement(betweenDiagonalPieces.size(), pair, coordinates);
 	}
 
 	boolean isLimit(Coordinate coordinate) {
@@ -49,6 +52,7 @@ public abstract class Piece {
 			return difference > 0;
 		return difference < 0;
 	}
+
 
 	public Color getColor() {
 		return this.color;

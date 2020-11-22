@@ -28,7 +28,7 @@ class PlayView extends SubView {
         assert playController != null;
         Error error;
         do {
-            error = null;
+            error = Error.NONE;
             this.string = this.read(playController.getColor());
             if (this.isCanceledFormat())
                 playController.cancel();
@@ -38,10 +38,10 @@ class PlayView extends SubView {
             } else {
                 error = playController.move(this.getCoordinates());
                 new GameView().write(playController);
-                if (error == null && playController.isBlocked())
+                if (error == Error.NONE && playController.isBlocked())
                     this.writeLost();
             }
-        } while (error != null);
+        } while (error != Error.NONE);
     }
 
     private String read(Color color) {
