@@ -31,7 +31,7 @@ public class GameViewTest extends SubViewTest {
     private Console console;
 
     @InjectMocks
-    private GameView gameView;
+    private ViewForTesting view;
 
     @Before
     public void beforeGameView() {
@@ -67,7 +67,7 @@ public class GameViewTest extends SubViewTest {
                 "8b b b b 8\n" +
                 " 12345678\n";
 
-        gameView.write(startController);
+        this.view.writeGame(startController);
         assertThat(board, is(equalTo(outputStreamCaptor.toString())));
     }
 }

@@ -7,6 +7,8 @@ public class Coordinate {
 
     private int row;
     private int column;
+    //TODO USAR LA COORDNADE DE UTILS GENERICA DEL TICTAC TOE --> asociada de 0..7
+    // Deescolampsar jerarquiía
     private static final int LOWER_LIMIT = 0;
     private static final int UPPER_LIMIT = 7;
     private static final int DIMENSION = UPPER_LIMIT + 1;

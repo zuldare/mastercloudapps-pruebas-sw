@@ -55,7 +55,7 @@ public class Game {
 		assert coordinates[pair] != null;
 		assert coordinates[pair + 1] != null;
 
-		// TODO CHAIN OF RESPONSIBILITY
+		// TODO CHAIN OF RESPONSIBILITY  game quiere hablar con board, turno y piezas o una nueva clase chekeadorTurno..tablero..
 		if (board.isEmpty(coordinates[pair]))
 			return Error.EMPTY_ORIGIN;
 		if (this.turn.getOppositeColor() == this.board.getColor(coordinates[pair]))

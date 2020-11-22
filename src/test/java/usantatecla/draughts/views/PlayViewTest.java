@@ -22,7 +22,7 @@ public class PlayViewTest extends SubViewTest {
     private PlayController playController;
 
     @InjectMocks
-    private PlayView playView;
+    private ViewForTesting view;
 
     @Before
     public void beforeGameView() {
@@ -38,7 +38,7 @@ public class PlayViewTest extends SubViewTest {
     public void testPlayCancel() {
         when(this.console.readString(anyString())).thenReturn(getCoordinates(PlayViewTest.CANCEL_FORMAT));
 
-        this.playView.interact(this.playController);
+        this.view.interact(this.playController);
         verify(playController, times(1)).cancel();
         verify(this.console).readString(anyString());
     }
@@ -58,7 +58,7 @@ public class PlayViewTest extends SubViewTest {
         doReturn(Error.NONE).when(playController).move(any(Coordinate.class), any(Coordinate.class));
         when(playController.isBlocked()).thenReturn(false);
 
-        playView.interact(playController);
+        view.interact(playController);
 
         verify(console, times(6)).writeln(eq(ERROR_MESSAGE));
         verify(console, never()).writeln(eq(LOST_MESSAGE));
@@ -71,7 +71,7 @@ public class PlayViewTest extends SubViewTest {
         doReturn(Error.NONE).when(playController).move(any(Coordinate.class), any(Coordinate.class));
         when(playController.isBlocked()).thenReturn(true);
 
-        playView.interact(playController);
+        view.interact(playController);
         verify(console).writeln(eq(LOST_MESSAGE));
 
     }
@@ -83,7 +83,7 @@ public class PlayViewTest extends SubViewTest {
         doReturn(Error.NONE).when(this.playController).move(any(Coordinate.class), any(Coordinate.class));
         when(this.playController.isBlocked()).thenReturn(false);
 
-        this.playView.interact(this.playController);
+        this.view.interact(this.playController);
         verify(this.console, never()).writeln(eq(LOST_MESSAGE));
     }
 
@@ -94,7 +94,7 @@ public class PlayViewTest extends SubViewTest {
 
         when(this.playController.isBlocked()).thenReturn(false);
 
-        this.playView.interact(this.playController);
+        this.view.interact(this.playController);
         verify(this.console, never()).writeln(eq(LOST_MESSAGE));
     }
 
