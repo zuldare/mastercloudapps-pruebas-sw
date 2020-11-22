@@ -20,7 +20,6 @@ public class View implements InteractorControllersVisitor {
 
     private static final String MESSAGE_RESUME = "¿Queréis jugar otra";
     private static final String MESSAGE_START_TITTLE = "Draughts";
-
     private static final String COLOR_PARAM = "#color";
     private static final String[] COLOR_VALUES = { "blancas", "negras" };
     private static final String PROMPT = "Mueven las " + COLOR_PARAM + ": ";
@@ -31,7 +30,7 @@ public class View implements InteractorControllersVisitor {
     private String string;
 
     private YesNoDialog yesNoDialog;
-    Console console;
+    private Console console;
 
     public View(){
         this.yesNoDialog = new YesNoDialog();
@@ -100,6 +99,7 @@ public class View implements InteractorControllersVisitor {
         do {
             error = Error.NONE;
             this.string = this.read(playController.getColor());
+
             if (this.isCanceledFormat())
                 playController.cancel();
             else if (!this.isMoveFormat()) {
