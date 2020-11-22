@@ -1,5 +1,7 @@
 package usantatecla.draughts.models;
 
+import usantatecla.draughts.models.handlers.MovementChecker;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,10 +9,12 @@ public class Game {
 
 	private Board board;
 	private Turn turn;
+	private MovementChecker movementChecker;
 
 	Game(Board board) {
 		this.turn = new Turn();
 		this.board = board;
+		this.movementChecker = new MovementChecker();
 	}
 
 	public Game() {
@@ -55,16 +59,7 @@ public class Game {
 		assert coordinates[pair] != null;
 		assert coordinates[pair + 1] != null;
 
-		// TODO CHAIN OF RESPONSIBILITY  game quiere hablar con board, turno y piezas o una nueva clase chekeadorTurno..tablero..
-		if (board.isEmpty(coordinates[pair]))
-			return Error.EMPTY_ORIGIN;
-		if (this.turn.getOppositeColor() == this.board.getColor(coordinates[pair]))
-			return Error.OPPOSITE_PIECE;
-		if (!this.board.isEmpty(coordinates[pair + 1]))
-			return Error.NOT_EMPTY_TARGET;
-		List<Piece> betweenDiagonalPieces = 
-			this.board.getBetweenDiagonalPieces(coordinates[pair], coordinates[pair + 1]);
-		return this.board.getPiece(coordinates[pair]).isCorrectMovement(betweenDiagonalPieces, pair, coordinates);
+		return this.movementChecker.check(new Movement(board, turn, coordinates, pair));
 	}
 
 	private void movePair(List<Coordinate> removedCoordinates, int pair, Coordinate... coordinates) {

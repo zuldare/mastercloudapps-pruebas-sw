@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class Board {
+public class Board {
 
     private Piece[][] pieces;
 
@@ -15,28 +15,28 @@ class Board {
                 this.pieces[i][j] = null;
     }
 
-    Piece getPiece(Coordinate coordinate) {
+    public Piece getPiece(Coordinate coordinate) {
         assert coordinate != null;
         return this.pieces[coordinate.getRow()][coordinate.getColumn()];
     }
 
-    void put(Coordinate coordinate, Piece piece) {
+    public void put(Coordinate coordinate, Piece piece) {
         this.pieces[coordinate.getRow()][coordinate.getColumn()] = piece;
     }
 
-    Piece remove(Coordinate coordinate) {
+    public Piece remove(Coordinate coordinate) {
         assert this.getPiece(coordinate) != null;
         Piece piece = this.getPiece(coordinate);
         this.put(coordinate, null);
         return piece;
     }
 
-    void move(Coordinate origin, Coordinate target) {
+    public void move(Coordinate origin, Coordinate target) {
         assert this.getPiece(origin) != null;
         this.put(target, this.remove(origin));
     }
 
-    List<Piece> getBetweenDiagonalPieces(Coordinate origin, Coordinate target) {
+    public List<Piece> getBetweenDiagonalPieces(Coordinate origin, Coordinate target) {
         List<Piece> betweenDiagonalPieces = new ArrayList<Piece>();
         if (origin.isOnDiagonal(target))
             for (Coordinate coordinate : origin.getBetweenDiagonalCoordinates(target)) {
@@ -48,14 +48,14 @@ class Board {
     }
 
 
-    Color getColor(Coordinate coordinate) {
+    public Color getColor(Coordinate coordinate) {
         final Piece piece = this.getPiece(coordinate);
         if (piece == null)
             return Color.NONE;
         return piece.getColor();
     }
 
-    boolean isEmpty(Coordinate coordinate) {
+    public boolean isEmpty(Coordinate coordinate) {
         return this.getPiece(coordinate) == null;
     }
 

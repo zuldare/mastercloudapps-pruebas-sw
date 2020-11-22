@@ -14,7 +14,7 @@ public abstract class Piece {
 
 	abstract Error isCorrectDiagonalMovement(int amountBetweenDiagonalPieces, int pair, Coordinate... coordinates);
 
-	Error isCorrectMovement(List<Piece> betweenDiagonalPieces, int pair, Coordinate... coordinates){
+	public Error isCorrectMovement(List<Piece> betweenDiagonalPieces, int pair, Coordinate... coordinates){
 		assert coordinates[pair] != null;
 		assert coordinates[pair + 1] != null;
 

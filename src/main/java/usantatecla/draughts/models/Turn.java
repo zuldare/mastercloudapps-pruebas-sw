@@ -1,6 +1,6 @@
 package usantatecla.draughts.models;
 
-class Turn {
+public class Turn {
 
   private Color color;
 
@@ -12,11 +12,11 @@ class Turn {
     this.color = this.getOppositeColor();
   }
 
-  Color getColor() {
+  public Color getColor() {
     return this.color;
   }
 
-  Color getOppositeColor() {
+  public Color getOppositeColor() {
     return Color.values()[(this.color.ordinal() + 1) % 2];
   }
 
